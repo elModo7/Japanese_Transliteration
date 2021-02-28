@@ -1,9 +1,10 @@
-﻿#SingleInstance, Force
+﻿#NoEnv
+#InputLevel, 1
+#SingleInstance, Force
 ; Activar/Desactivar con Control Alt j
 ^!j::Suspend
 
 ; Hiragana
-:*C:tsu::つ
 :*C:kya::きゃ
 :*C:kyu::きゅ
 :*C:kyo::きょ
@@ -49,7 +50,6 @@
 :*C:pa::ぱ
 :*C:ra::ら
 :*C:sa::さ
-:*C:ta::た
 :*C:wa::わ
 :*C:ya::や
 :*C:za::ざ
@@ -63,7 +63,6 @@
 :*C:pe::ぺ
 :*C:re::れ
 :*C:se::せ
-:*C:te::て
 :*C:we::ゑ
 :*C:ze::ぜ
 :*C:bi::び
@@ -73,6 +72,9 @@
 :*C:mi::み
 :*C:ni::に
 :*C:pi::ぴ
+:*C:ta::た
+:*C:te::て
+:*C:to::と
 :*C:ri::り
 :*C:wi::ゐ
 :*C:ji::じ
@@ -86,7 +88,6 @@
 :*C:po::ぽ
 :*C:ro::ろ
 :*C:so::そ
-:*C:to::と
 :*C:wo::を
 :*C:yo::よ
 :*C:zo::ぞ
@@ -117,38 +118,219 @@
 :*C:q::っ
 :*C:n:: ; Caso especial, para poner una n sola hay que poner n{espacio}, con la o omito el espacio para que ponga el simbolo sin espacio
 	Send, ん
-	Input, key, L1
+	Input, key, L1, {BackSpace} ; Include special key BS as a trigger (special keys need to be specifically set here)
 	if (key = "a") {
-		Send, {BackSpace}な
+		Send, {BS}な
 	}
 	else if (key = "e") {
-		Send, {BackSpace}ね
+		Send, {BS}ね
 	}
 	else if (key = "i") {
-		Send, {BackSpace}に
+		Send, {BS}に
 	}
 	else if (key = "o") {
-		Send, {BackSpace}の
+		Send, {BS}の
 	}
 	else if (key = "u") {
-		Send, {BackSpace}ぬ
+		Send, {BS}ぬ
 	}
 	else if (key = "y") {
 		Input, key2, L1
 		if (key2 = "a") {
-			Send, {BackSpace}にゃ
+			Send, {BS}にゃ
 		}
 		else if (key2 = "o") {
-			Send, {BackSpace}にょ
+			Send, {BS}にょ
 		}
 		else if (key2 = "u") {
-			Send, {BackSpace}にゅ
+			Send, {BS}にゅ
 		}
 	}
 	else{
-		SendLevel 1
-		#InputLevel, 1
-		Send, % key
+		gosub, sendDefault
+	}
+return
+:*C:t::
+	Send, っ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}た
+	}
+	else if (key = "e") {
+		Send, {BS}て
+	}
+	else if (key = "o") {
+		Send, {BS}と
+	}
+	else if (key = "s") {
+		Input, key2, L1
+		if (key2 = "u") {
+			Send, つ
+		}else{
+			SendLevel 1
+			Send, % key
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:p::
+	Send, っ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}ぱ
+	}
+	else if (key = "e") {
+		Send, {BS}ぺ
+	}
+	else if (key = "i") {
+		Send, {BS}ぴ
+	}
+	else if (key = "o") {
+		Send, {BS}ぽ
+	}
+	else if (key = "u") {
+		Send, {BS}ぷ
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}ぴゃ
+		}
+		else if (key2 = "o") {
+			Send, {BS}ぴょ
+		}
+		else if (key2 = "u") {
+			Send, {BS}ぴゅ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:b::
+	Send, っ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}ば
+	}
+	else if (key = "e") {
+		Send, {BS}べ
+	}
+	else if (key = "i") {
+		Send, {BS}び
+	}
+	else if (key = "o") {
+		Send, {BS}ぼ
+	}
+	else if (key = "u") {
+		Send, {BS}ぶ
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}びゃ
+		}
+		else if (key2 = "o") {
+			Send, {BS}びょ
+		}
+		else if (key2 = "u") {
+			Send, {BS}びゅ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:g::
+	Send, っ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}が
+	}
+	else if (key = "e") {
+		Send, {BS}げ
+	}
+	else if (key = "i") {
+		Send, {BS}ぎ
+	}
+	else if (key = "o") {
+		Send, {BS}ご
+	}
+	else if (key = "u") {
+		Send, {BS}ぐ
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}ぎゃ
+		}
+		else if (key2 = "o") {
+			Send, {BS}ぎょ
+		}
+		else if (key2 = "u") {
+			Send, {BS}ぎゅ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:k::
+	Send, っ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}か
+	}
+	else if (key = "e") {
+		Send, {BS}け
+	}
+	else if (key = "i") {
+		Send, {BS}き
+	}
+	else if (key = "o") {
+		Send, {BS}こ
+	}
+	else if (key = "u") {
+		Send, {BS}く
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}きゃ
+		}
+		else if (key2 = "o") {
+			Send, {BS}きょ
+		}
+		else if (key2 = "u") {
+			Send, {BS}きゅ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:d::
+	Send, っ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}だ
+	}
+	else if (key = "e") {
+		Send, {BS}で
+	}
+	else if (key = "i") {
+		Send, {BS}ぢ
+	}
+	else if (key = "o") {
+		Send, {BS}ど
+	}
+	else if (key = "u") {
+		Send, {BS}づ
+	}
+	else{
+		gosub, sendDefault
 	}
 return
 
@@ -163,41 +345,6 @@ return
 :*:Î::イー
 :*:Ô::オー
 :*:Û::ウー
-:*C:N:: ; Caso especial, para poner una n sola hay que poner n{espacio}, con la o omito el espacio para que ponga el simbolo sin espacio
-	Send, ン
-	Input, key, L1
-	if (key = "A") {
-		Send, {BackSpace}ナ
-	}
-	else if (key = "E") {
-		Send, {BackSpace}ネ
-	}
-	else if (key = "I") {
-		Send, {BackSpace}ニ
-	}
-	else if (key = "O") {
-		Send, {BackSpace}ノ
-	}
-	else if (key = "U") {
-		Send, {BackSpace}ヌ
-	}
-	else if (key = "Y") {
-		Input, key2, L1
-		if (key2 = "A") {
-			Send, {BackSpace}ニャ
-		}
-		else if (key2 = "O") {
-			Send, {BackSpace}ニョ
-		}
-		else if (key2 = "U") {
-			Send, {BackSpace}ニュ
-		}
-	}
-	else{
-		SendLevel 1
-		Send, % key
-	}
-return
 :*C:V::ヴ
 :*C:Q::ッ
 :*C:SHI::シ
@@ -300,6 +447,223 @@ return
 :*C:ZU::ズ
 :*C:DI::ヂ
 :*C:DU::ヅ
+:*C:N:: ; Caso especial, para poner una n sola hay que poner n{espacio}, con la o omito el espacio para que ponga el simbolo sin espacio
+	Send, ン
+	Input, key, L1, {BackSpace} ; Include special key BS as a trigger (special keys need to be specifically set here)
+	if (key = "A") {
+		Send, {BackSpace}ナ
+	}
+	else if (key = "E") {
+		Send, {BackSpace}ネ
+	}
+	else if (key = "I") {
+		Send, {BackSpace}ニ
+	}
+	else if (key = "O") {
+		Send, {BackSpace}ノ
+	}
+	else if (key = "U") {
+		Send, {BackSpace}ヌ
+	}
+	else if (key = "Y") {
+		Input, key2, L1
+		if (key2 = "A") {
+			Send, {BackSpace}ニャ
+		}
+		else if (key2 = "O") {
+			Send, {BackSpace}ニョ
+		}
+		else if (key2 = "U") {
+			Send, {BackSpace}ニュ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:T::
+	Send, ッ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}タ
+	}
+	else if (key = "e") {
+		Send, {BS}テ
+	}
+	else if (key = "o") {
+		Send, {BS}ト
+	}
+	else if (key = "s") {
+		Input, key2, L1
+		if (key2 = "u") {
+			Send, ツ
+		}else{
+			SendLevel 1
+			Send, % key
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:P::
+	Send, ッ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}パ
+	}
+	else if (key = "e") {
+		Send, {BS}ペ
+	}
+	else if (key = "i") {
+		Send, {BS}ピ
+	}
+	else if (key = "o") {
+		Send, {BS}ポ
+	}
+	else if (key = "u") {
+		Send, {BS}プ
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}ピャ
+		}
+		else if (key2 = "o") {
+			Send, {BS}ピョ
+		}
+		else if (key2 = "u") {
+			Send, {BS}ピュ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:B::
+	Send, ッ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}バ
+	}
+	else if (key = "e") {
+		Send, {BS}ベ
+	}
+	else if (key = "i") {
+		Send, {BS}ビ
+	}
+	else if (key = "o") {
+		Send, {BS}ボ
+	}
+	else if (key = "u") {
+		Send, {BS}ブ
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}ビャ
+		}
+		else if (key2 = "o") {
+			Send, {BS}ビョ
+		}
+		else if (key2 = "u") {
+			Send, {BS}ビュ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:G::
+	Send, ッ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}ガ
+	}
+	else if (key = "e") {
+		Send, {BS}ゲ
+	}
+	else if (key = "i") {
+		Send, {BS}ギ
+	}
+	else if (key = "o") {
+		Send, {BS}ゴ
+	}
+	else if (key = "u") {
+		Send, {BS}グ
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}ギャ
+		}
+		else if (key2 = "o") {
+			Send, {BS}ギョ
+		}
+		else if (key2 = "u") {
+			Send, {BS}ギュ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:K::
+	Send, ッ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}カ
+	}
+	else if (key = "e") {
+		Send, {BS}ケ
+	}
+	else if (key = "i") {
+		Send, {BS}キ
+	}
+	else if (key = "o") {
+		Send, {BS}コ
+	}
+	else if (key = "u") {
+		Send, {BS}ク
+	}
+	else if (key = "y") {
+		Input, key2, L1
+		if (key2 = "a") {
+			Send, {BS}キャ
+		}
+		else if (key2 = "o") {
+			Send, {BS}キョ
+		}
+		else if (key2 = "u") {
+			Send, {BS}キュ
+		}
+	}
+	else{
+		gosub, sendDefault
+	}
+return
+:*C:D::
+	Send, ッ
+	Input, key, L1, {BS}
+	if (key = "a") {
+		Send, {BS}ダ
+	}
+	else if (key = "e") {
+		Send, {BS}デ
+	}
+	else if (key = "i") {
+		Send, {BS}ヂ
+	}
+	else if (key = "o") {
+		Send, {BS}ド
+	}
+	else if (key = "u") {
+		Send, {BS}ヅ
+	}
+	else{
+		gosub, sendDefault
+	}
+return
 
 ; Simbolos
 :*:.::。
@@ -348,3 +712,16 @@ return
 :*:º::゜
 :*:_::＿
 :*:~::～
+
+sendDefault:
+	FoundPos := RegExMatch(ErrorLevel, "EndKey:(.*)", SubPat)
+	if (FoundPos > 0)
+		key = {%SubPat1%}
+	if(key = "{BackSpace}")
+		Send, {BS}
+	else
+	{
+		SendLevel 1
+		Send, % key
+	}
+return
