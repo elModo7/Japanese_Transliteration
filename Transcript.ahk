@@ -1,4 +1,4 @@
-﻿#NoEnv
+#NoEnv
 #InputLevel, 1
 #SingleInstance, Force
 ; Activar/Desactivar con Control Alt j
@@ -94,6 +94,10 @@
 :*C:bu::ぶ
 :*C:gu::ぐ
 :*C:fu::ふ
+:*C:fa::ふぁ
+:*C:fe::ふぇ
+:*C:fi::ふぃ
+:*C:fo::ふぉ
 :*C:ku::く
 :*C:mu::む
 :*C:nu::ぬ
@@ -165,7 +169,7 @@ return
 	else if (key = "s") {
 		Input, key2, L1
 		if (key2 = "u") {
-			Send, つ
+			Send, {BS}つ
 		}else{
 			SendLevel 1
 			Send, % key
@@ -437,6 +441,10 @@ return
 :*C:BU::ブ
 :*C:GU::グ
 :*C:FU::フ
+:*C:FA::ファ
+:*C:FE::フェ
+:*C:FI::フィ
+:*C:FO::フォ
 :*C:KU::ク
 :*C:MU::ム
 :*C:NU::ヌ
@@ -496,7 +504,7 @@ return
 	else if (key = "s") {
 		Input, key2, L1
 		if (key2 = "u") {
-			Send, ツ
+			Send, {BS}ツ
 		}else{
 			SendLevel 1
 			Send, % key
